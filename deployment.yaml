@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flaskdemo-region2
+  name: flaskdemo-region2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flaskdemo-region2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flaskdemo-region2
+    spec:
+      containers:
+      - image: fatninja/kubetest:1
+        name: flaskdemo-region2
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-service
+  labels:
+    app: lb-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: flaskdemo-region2
