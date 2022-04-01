@@ -20,6 +20,9 @@ spec:
       containers:
       - image: fatninja/kubetest:19
         name: flaskdemo-region2
+        env:
+        - name: REGION
+          value: "USA"
         resources: {}
 status: {}
 ---
