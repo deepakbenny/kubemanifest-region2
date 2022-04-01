@@ -18,7 +18,7 @@ spec:
         app: flaskdemo-region2
     spec:
       containers:
-      - image: fatninja/kubetest:21
+      - image: fatninja/kubetest:22
         name: flaskdemo-region2
         env:
         - name: REGION
